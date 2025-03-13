@@ -15,5 +15,4 @@ MonoBehaviour:
   npcName: POPOL
   dialogueLines:
   - 'Greeting Traveler ! '
-  - 
   - 'How are you doing ?  '

@@ -215,12 +215,12 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             GameObject slotGO = Instantiate(slotPrefab, slotsGrid);
-            InventorySlotUI slotUI = slotGO.GetComponent<InventorySlotUI>();
+           /* InventorySlotUI slotUI = slotGO.GetComponent<InventorySlotUI>();
 
             if (slotUI != null)
             {
                 slotUI.SetupSlot(i, slots[i]);
-            }
+            }*/
         }
     }
 }
