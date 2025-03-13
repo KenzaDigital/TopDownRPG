@@ -9,7 +9,7 @@ public class PlayerInteraction : InputHandler
     public GameObject interactionPromptPanel;
     public TextMeshProUGUI interactionPromptText;
     public TextMeshProUGUI name;
-
+    private bool isInteracting = false;  
     // L'interactable actuellement à portée
     private IInteractable currentInteractable;
 
@@ -46,8 +46,9 @@ public class PlayerInteraction : InputHandler
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        if (currentInteractable != null)
+        if (currentInteractable != null && isInteracting==false)
         {
+            isInteracting = true;
             currentInteractable.Interact();
         }
     }
@@ -96,6 +97,7 @@ public class PlayerInteraction : InputHandler
 
             if (interactionPromptPanel != null)
             {
+                isInteracting = false;  
                 interactionPromptPanel.SetActive(false);
             }
         }
