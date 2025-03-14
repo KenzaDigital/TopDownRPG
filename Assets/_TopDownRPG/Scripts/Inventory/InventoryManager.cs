@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class InventoryManager : MonoBehaviour
 {
-
     [Header("Input Settings")]
     public InputActionReference inventoryAction; // L'action pour ouvrir/fermer l'inventaire
 
@@ -15,18 +15,19 @@ public class InventoryManager : MonoBehaviour
                                                                   // Dictionnaire pour accéder rapidement aux objets par leur ID (peu utilisé dans cette version)
     Dictionary<string, InventorySlot> itemsById = new Dictionary<string, InventorySlot>();
 
-
     [Header("UI References")]
     public GameObject inventoryPanel;  // Le panel principal de l'inventaire
     public Transform slotsGrid; // Le parent où les slots seront instanciés
     public GameObject slotPrefab; // Le prefab pour un emplacement d'inventaire
+    public GameObject backgroundOverlay; // Fond semi-transparent
+    public Button closeButton; // Bouton de fermeture
 
     private bool isInventoryOpen = false; // L'inventaire est-il actuellement ouvert?
 
     public static InventoryManager Instance { get; private set; }
+
     private void Awake()
     {
-
         // Singleton pattern
         if (Instance != null && Instance != this)
         {
@@ -34,7 +35,6 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         Instance = this;
-
 
         // Initialiser les slots d'inventaire
         for (int i = 0; i < inventorySize; i++)
@@ -47,14 +47,23 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryPanel.SetActive(false);
         }
+        if (backgroundOverlay != null)
+        {
+            backgroundOverlay.SetActive(false);
+        }
 
         // Configurer l'action d'input pour ouvrir l'inventaire
         if (inventoryAction != null)
         {
             inventoryAction.action.started += OnInventoryInput;
         }
-    }
 
+        // Configurer le bouton de fermeture
+        if (closeButton != null)
+        {
+            closeButton.onClick.AddListener(CloseInventory);
+        }
+    }
 
     private void Start()
     {
@@ -71,7 +80,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-
     private void OnDisable()
     {
         // Désactiver l'action d'input
@@ -80,6 +88,7 @@ public class InventoryManager : MonoBehaviour
             inventoryAction.action.Disable();
         }
     }
+
     private void OnDestroy()
     {
         // Nettoyer les abonnements d'événements
@@ -88,6 +97,7 @@ public class InventoryManager : MonoBehaviour
             inventoryAction.action.started -= OnInventoryInput;
         }
     }
+
     private void OnInventoryInput(InputAction.CallbackContext obj)
     {
         ToggleInventory();
@@ -99,11 +109,28 @@ public class InventoryManager : MonoBehaviour
         // Inverser l'état actuel
         isInventoryOpen = !isInventoryOpen;
 
-
         // Appliquer ce changement à l'interface
         if (inventoryPanel)
         {
             inventoryPanel.SetActive(isInventoryOpen);
+        }
+        if (backgroundOverlay)
+        {
+            backgroundOverlay.SetActive(isInventoryOpen);
+        }
+    }
+
+    // Méthode pour fermer l'inventaire
+    public void CloseInventory()
+    {
+        isInventoryOpen = false;
+        if (inventoryPanel)
+        {
+            inventoryPanel.SetActive(false);
+        }
+        if (backgroundOverlay)
+        {
+            backgroundOverlay.SetActive(false);
         }
     }
 
@@ -117,14 +144,11 @@ public class InventoryManager : MonoBehaviour
             // Chercher un slot existant avec le même item
             for (int i = 0; i < slots.Count; i++)
             {
-
-
                 // Vérifier si le slot contient le même objet et n'est pas plein
                 if (slots[i].item == item && slots[i].quantity < item.maxStackSize)
                 {
                     // Essayer d'ajouter l'objet à ce slot
                     quantity = slots[i].AddItem(item, quantity);
-
 
                     // Si tout a été ajouté, mettre à jour l'UI et retourner true
                     if (quantity <= 0)
@@ -144,7 +168,6 @@ public class InventoryManager : MonoBehaviour
                 // Essayer d'ajouter l'objet à cet emplacement vide
                 quantity = slots[i].AddItem(item, quantity);
 
-
                 // Si tout a été ajouté, mettre à jour l'UI et retourner true
                 if (quantity <= 0)
                 {
@@ -153,7 +176,6 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-
 
         // --- INVENTAIRE PLEIN ---
         // Si on arrive ici, c'est que l'objet n'a pas pu être ajouté complètement
@@ -215,12 +237,12 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             GameObject slotGO = Instantiate(slotPrefab, slotsGrid);
-           /* InventorySlotUI slotUI = slotGO.GetComponent<InventorySlotUI>();
+            InventorySlotUI slotUI = slotGO.GetComponent<InventorySlotUI>();
 
             if (slotUI != null)
             {
                 slotUI.SetupSlot(i, slots[i]);
-            }*/
+            }
         }
     }
 }
