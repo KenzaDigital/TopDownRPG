@@ -6669,6 +6669,7 @@ GameObject:
   - component: {fileID: 1970170751}
   - component: {fileID: 1970170753}
   - component: {fileID: 1970170754}
+  - component: {fileID: 1970170755}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6821,6 +6822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 1970170752}
+  animator: {fileID: 1155510326}
 --- !u!114 &1970170754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6834,6 +6836,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1970170753}
+--- !u!114 &1970170755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970170748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5cad2a38814b824790a6c97d0187c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: -10
+  maxMana: 50
+  currentMana: 0
+  attackDamage: 10
+  attackRange: 1
+  attackCooldown: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onManaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2022429945
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,25 @@ public class CharacterController : MonoBehaviour
 {
     [Header("Mouvement")]
     [SerializeField] private float moveSpeed = 5f;
-    [Header("R�f�rences")]
+    [Header("Références")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator; // Référence à l'Animator
     private Vector2 moveDirection;
     private bool isFacingRight = true;
+
+    // Déclaration des booléens
+    private bool isMoving = false; // Ici, le joueur est en mouvement ou non
 
     private void Awake()
     {
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
+        }
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
         }
     }
 
@@ -52,6 +61,16 @@ public class CharacterController : MonoBehaviour
         else if (direction.x < 0 && isFacingRight)
         {
             Flip();
+        }
+
+        // Mettre à jour le booléen isMoving
+        isMoving = direction != Vector2.zero;
+
+        // Mettre à jour l'Animator
+        if (animator != null)
+        {
+            Debug.Log("Setting IsMoving to " + isMoving);
+            animator.SetBool("isWalking", isMoving);
         }
     }
 
