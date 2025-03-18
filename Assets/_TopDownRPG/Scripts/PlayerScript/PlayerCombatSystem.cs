@@ -81,7 +81,7 @@ public class PlayerCombatSystem : MonoBehaviour
     // Fonction pour que le joueur subisse des dégâts
     // [ContextMenu] permet de tester cette fonction depuis l'inspecteur
     [ContextMenu("TakeDamage")]
-    public void TakeDamage()
+    public void TakeDamage(int attackDamage)
     {
         // Dans cette version, les dégâts sont fixés à 10 pour simplifier
         int damage = 10;
