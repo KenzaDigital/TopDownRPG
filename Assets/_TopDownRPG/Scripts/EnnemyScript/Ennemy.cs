@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             // Le joueur est à portée d'attaque
             currentState = EnemyState.Attack;
         }
-        else if (distanceToPlayer <= detectionRadius)  // Vérifier si le joueur est dans le rayon de détection
+        else if (distanceToPlayer <= detectionRadius && currentState!= EnemyState.Attack)  // Vérifier si le joueur est dans le rayon de détection
         {
             // Vérifier s'il y a une ligne de vue vers le joueur
             bool hasLineOfSight = !Physics2D.Raycast(transform.position,
@@ -212,7 +212,9 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         if (!playerTransform || !enemyCombatSystem)
+        {
             return;
+        }
 
         // Orienter l'ennemi vers le joueur
         float directionX = playerTransform.position.x - transform.position.x;

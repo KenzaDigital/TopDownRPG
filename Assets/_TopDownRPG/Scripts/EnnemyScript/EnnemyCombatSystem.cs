@@ -59,13 +59,16 @@ public class EnemyCombatSystem : MonoBehaviour
     public void Attack(PlayerCombatSystem player)
     {
         if (Time.time - lastAttackTime < attackCooldown || player.currentHealth <= 0)
+        {
             return;
+        }
 
         lastAttackTime = Time.time;
 
         if (animator)
+        {
             animator.SetTrigger("Attack");
-
+        }
         player.TakeDamage(attackDamage);
     }
 
