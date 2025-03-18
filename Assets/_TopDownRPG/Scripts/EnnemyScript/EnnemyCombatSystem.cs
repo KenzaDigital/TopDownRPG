@@ -12,7 +12,9 @@ public class EnemyCombatSystem : MonoBehaviour
     [Header("Combat Settings")]
     public int attackDamage = 5;
     public float attackRange = 1.0f;
+    public float attackFrontDistance = 1.2f;
     public float attackCooldown = 1.0f;
+    public LayerMask playerLayer;
 
     [Header("Reward Settings")]
     public int experienceReward = 10;

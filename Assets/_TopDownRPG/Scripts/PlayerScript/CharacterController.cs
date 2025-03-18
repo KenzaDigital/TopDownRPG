@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
 
         if (animator == null)
         {
-            animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>(); // Utiliser GetComponent car l'Animator est sur le GameObject principal
         }
     }
 
@@ -70,6 +70,7 @@ public class CharacterController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("isWalking", isMoving);
+            Debug.Log("isWalking: " + isMoving);
         }
     }
 
