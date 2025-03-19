@@ -30780,7 +30780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 11400000, guid: d689127e4884e5f41932334077c06558, type: 2}
-  customName: MysteriousDude
+  customName: Dude
 --- !u!95 &990409381
 Animator:
   serializedVersion: 7
@@ -31205,7 +31205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Farmy
+  m_text: Dude
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31232,8 +31232,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -31681,10 +31681,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.3
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -33351,7 +33351,7 @@ GameObject:
   - component: {fileID: 1970170757}
   - component: {fileID: 1970170756}
   - component: {fileID: 1970170758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -33975,7 +33975,7 @@ GameObject:
   - component: {fileID: 2064954524}
   - component: {fileID: 2064954525}
   - component: {fileID: 2064954526}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: PlayerInteract
   m_TagString: Untagged
   m_Icon: {fileID: 0}

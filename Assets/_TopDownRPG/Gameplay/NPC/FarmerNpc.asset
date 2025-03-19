@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9f2f384f97beb45994c453c0a8f542, type: 3}
   m_Name: FarmerNpc
   m_EditorClassIdentifier: 
-  npcName: POPOL
+  npcName: DUDE
   dialogueLines:
-  - 'Greeting Traveler ! '
-  - 'How are you doing ?  '
+  - 'Hey you !! '
+  - Come here !!
+  - 'You have to do something for me ..... '
+  - '*Dude is looking around with a suspicious look*'

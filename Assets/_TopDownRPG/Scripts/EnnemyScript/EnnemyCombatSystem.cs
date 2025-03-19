@@ -13,8 +13,8 @@ public class EnemyCombatSystem : MonoBehaviour
     public int attackDamage = 5;
     public float attackRange = 1.0f;
     public float attackCooldown = 1.0f;
-    public float attackFrontDistance = 1.0f;   
-    public LayerMask playerLayer;   
+    public float attackFrontDistance = 1.0f;
+    public LayerMask playerLayer;
 
     [Header("Reward Settings")]
     public int experienceReward = 10;
@@ -29,6 +29,7 @@ public class EnemyCombatSystem : MonoBehaviour
     private float lastAttackTime;
     private Animator animator;
     private Enemy enemy;
+    private bool isDead = false; // Booléen pour vérifier si l'ennemi est déjà mort
 
     private void Awake()
     {
@@ -44,12 +45,14 @@ public class EnemyCombatSystem : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return; // Si l'ennemi est déjà mort, ne pas continuer
+
         currentHealth -= damage;
         onHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (animator != null)
         {
-            animator.SetTrigger("Hit");
+            animator.SetTrigger("hit");
         }
 
         if (currentHealth <= 0)
@@ -73,9 +76,14 @@ public class EnemyCombatSystem : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return; // Si l'ennemi est déjà mort, ne pas continuer
+
+        isDead = true; // Marquer l'ennemi comme mort
+
         if (animator != null)
         {
             animator.SetTrigger("Die");
+            Debug.Log("Enemy is dead");
         }
 
         if (enemy != null)
@@ -100,14 +108,14 @@ public class EnemyCombatSystem : MonoBehaviour
             collider.enabled = false;
         }
 
-        Renderer renderer = GetComponent<Renderer>();
+        /*Renderer renderer = GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.enabled = false;
-        }
+        }*/
 
         // Détruire l'ennemi après un délai pour laisser l'animation se jouer
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, 5.0f);
     }
 
     private void DropItem()
@@ -134,6 +142,7 @@ public class EnemyCombatSystem : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         onHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+
     public void OnAttackEvent()
     {
         // Déterminer la position de l'attaque devant le joueur
