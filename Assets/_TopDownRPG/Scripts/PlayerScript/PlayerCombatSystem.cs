@@ -2,37 +2,33 @@
 // Il est au cœur du gameplay, permettant au joueur d'interagir avec les ennemis
 using UnityEngine;
 using UnityEngine.Events;  // Nécessaire pour utiliser UnityEvent
-
+using UnityEngine.InputSystem; // Nécessaire pour utiliser InputSystem
 
 public class PlayerCombatSystem : MonoBehaviour
 {
-    // --- PARAMÈTRES DE SANTÉ ---
     [Header("Health Settings")]
-    public int maxHealth = 100;      // Santé maximale que le joueur peut avoir
-    public int currentHealth;        // Santé actuelle du joueur (initialisée dans Start)
+    public int maxHealth = 100;
+    public int currentHealth;
 
-    // --- PARAMÈTRES DE MANA ---
     [Header("Mana Settings")]
-    public int maxMana = 50;         // Mana maximale que le joueur peut avoir
-    public int currentMana;          // Mana actuelle du joueur (initialisée dans Start)
+    public int maxMana = 50;
+    public int currentMana;
 
-    // --- PARAMÈTRES DE COMBAT ---
     [Header("Combat Settings")]
-    public int attackDamage = 10;    // Quantité de dégâts infligés par une attaque
-    public float attackRange = 1.0f;  // Distance à laquelle le joueur peut attaquer
-    public float attackCooldown = 0.5f; // Temps minimum entre deux attaques (en secondes)
-    public LayerMask enemyLayers;    // Couches (Layers) qui contiennent les ennemis
+    public int attackDamage = 10;
+    public float attackRange = 1.0f;
+    public float attackCooldown = 0.5f;
+    public LayerMask enemyLayers;
 
-    // --- ÉVÉNEMENTS ---
     [Header("Events")]
-    public UnityEvent<int, int> onHealthChanged;  // Déclenché quand la santé change (santé actuelle, santé max)
-    public UnityEvent<int, int> onManaChanged;    // Déclenché quand la mana change (mana actuelle, mana max)
-    public UnityEvent onPlayerDeath;              // Déclenché quand le joueur meurt
-    public UnityEvent onPlayerAttack;             // Déclenché quand le joueur attaque
+    public UnityEvent<int, int> onHealthChanged;
+    public UnityEvent<int, int> onManaChanged;
+    public UnityEvent onPlayerDeath;
+    public UnityEvent onPlayerAttack;
 
-    // --- VARIABLES PRIVÉES ---
-    private float lastAttackTime;    // Moment de la dernière attaque (pour le cooldown)
-    private Animator animator;       // Référence au composant Animator pour les animations
+    private float lastAttackTime;
+    private Animator animator;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -51,15 +47,18 @@ public class PlayerCombatSystem : MonoBehaviour
     [ContextMenu("Attack")]
     public void Attack()
     {
-        if (Time.time - lastAttackTime < attackCooldown)
+        if (Time.time - lastAttackTime < attackCooldown || isAttacking)
             return;
 
         lastAttackTime = Time.time;
+        isAttacking = true;
 
         if (animator != null)
         {
-            animator.SetTrigger("Attack");
+            animator.SetBool("isAttacking", true);
         }
+
+        onPlayerAttack?.Invoke();
     }
 
     [ContextMenu("TakeDamage")]
@@ -148,6 +147,16 @@ public class PlayerCombatSystem : MonoBehaviour
             {
                 enemyStats.TakeDamage(attackDamage);
             }
+        }
+    }
+
+    // Méthode pour réinitialiser l'état d'attaque
+    public void ResetAttack()
+    {
+        isAttacking = false;
+        if (animator != null)
+        {
+            animator.SetBool("isAttacking", false);
         }
     }
 
