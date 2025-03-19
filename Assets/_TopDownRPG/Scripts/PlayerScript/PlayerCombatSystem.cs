@@ -148,6 +148,9 @@ public class PlayerCombatSystem : MonoBehaviour
                 enemyStats.TakeDamage(attackDamage);
             }
         }
+
+        // Réinitialiser l'état d'attaque après avoir infligé des dégâts
+        ResetAttack();
     }
 
     // Méthode pour réinitialiser l'état d'attaque
