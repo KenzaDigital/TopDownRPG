@@ -72,13 +72,25 @@ public class PlayerCombatSystem : MonoBehaviour
 
         if (animator)
         {
-            Debug.Log("Hit");
-            animator.SetTrigger("Hit");
+            Debug.Log("hit");
+            animator.SetTrigger("hit");
         }
 
         if (currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            Invoke("ReturnToIdle", 0.5f);
+            Debug.Log("ReturnToIdle");
+        }
+    }
+    private void ReturnToIdle()
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger("Idle");
         }
     }
 
@@ -118,6 +130,7 @@ public class PlayerCombatSystem : MonoBehaviour
 
         onPlayerDeath?.Invoke();
     }
+   
 
     // Méthode d'événement d'animation
     public void OnAttackEvent()

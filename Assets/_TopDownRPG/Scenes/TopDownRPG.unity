@@ -32305,6 +32305,14 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackCooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
       propertyPath: experienceReward
       value: 20
       objectReference: {fileID: 0}
@@ -32929,11 +32937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7b31233ad45ea438143eb5b880ab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 20
   currentHealth: 0
-  attackDamage: 2
+  attackDamage: 1
   attackRange: 1
-  attackCooldown: 1
+  attackCooldown: 3
   experienceReward: 10
   possibleDrops: []
   dropChance: 0.3
@@ -33909,8 +33917,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
       propertyPath: attackRange
-      value: 1.5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackCooldown
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
       propertyPath: experienceReward
@@ -34002,8 +34022,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
       propertyPath: attackRange
-      value: 1.5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
+      propertyPath: attackCooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2933715104033825543, guid: bb4e79f79cf5882488dd58eb16edc74f, type: 3}
       propertyPath: experienceReward
