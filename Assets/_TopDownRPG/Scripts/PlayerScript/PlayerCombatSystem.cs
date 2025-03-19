@@ -109,7 +109,7 @@ public class PlayerCombatSystem : MonoBehaviour
     {
         if (animator)
         {
-            animator.SetTrigger("Die");
+            animator.SetTrigger("die");
         }
 
         CharacterController playerController = GetComponent<CharacterController>();
@@ -161,6 +161,7 @@ public class PlayerCombatSystem : MonoBehaviour
         {
             animator.SetBool("isAttacking", false);
         }
+        Debug.Log("ResetAttack: isAttacking = " + isAttacking);
     }
 
     private void OnDrawGizmosSelected()

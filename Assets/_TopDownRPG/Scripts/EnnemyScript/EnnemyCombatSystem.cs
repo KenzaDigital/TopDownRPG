@@ -12,9 +12,7 @@ public class EnemyCombatSystem : MonoBehaviour
     [Header("Combat Settings")]
     public int attackDamage = 5;
     public float attackRange = 1.0f;
-    public float attackFrontDistance = 1.2f;
     public float attackCooldown = 1.0f;
-    public LayerMask playerLayer;
 
     [Header("Reward Settings")]
     public int experienceReward = 10;
@@ -61,16 +59,13 @@ public class EnemyCombatSystem : MonoBehaviour
     public void Attack(PlayerCombatSystem player)
     {
         if (Time.time - lastAttackTime < attackCooldown || player.currentHealth <= 0)
-        {
             return;
-        }
 
         lastAttackTime = Time.time;
 
         if (animator)
-        {
             animator.SetTrigger("Attack");
-        }
+
         player.TakeDamage(attackDamage);
     }
 
@@ -95,6 +90,21 @@ public class EnemyCombatSystem : MonoBehaviour
         }
 
         DropItem();
+
+        // Désactiver les collisions et le renderer pour éviter les interférences
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
+
+        // Détruire l'ennemi après un délai pour laisser l'animation se jouer
         Destroy(gameObject, 2.0f);
     }
 

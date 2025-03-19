@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
 
     // Déclaration des booléens
     private bool isMoving = false; // Ici, le joueur est en mouvement ou non
+    private bool isAttacking = false; // Booléen pour indiquer si le joueur est en train d'attaquer
 
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class CharacterController : MonoBehaviour
 
     public void SetMoveDirection(Vector2 direction)
     {
+        
         moveDirection = direction;
 
         // Gestion de l'orientation du sprite

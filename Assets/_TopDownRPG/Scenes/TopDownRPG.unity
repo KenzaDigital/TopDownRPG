@@ -32933,11 +32933,7 @@ MonoBehaviour:
   currentHealth: 0
   attackDamage: 2
   attackRange: 1
-  attackFrontDistance: 1.2
   attackCooldown: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
   experienceReward: 10
   possibleDrops: []
   dropChance: 0.3
