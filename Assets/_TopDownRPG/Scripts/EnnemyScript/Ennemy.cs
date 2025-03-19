@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
         // Déterminer l'état en fonction de la distance
-        if (distanceToPlayer <= enemyCombatSystem.attackRange)
+        if (distanceToPlayer <= enemyCombatSystem.attackFrontDistance)
         {
             // Le joueur est à portée d'attaque
             currentState = EnemyState.Attack;
@@ -196,8 +196,16 @@ public class Enemy : MonoBehaviour
         // Calculer la direction vers le joueur
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
-        // Déplacer l'ennemi vers le joueur
-        rb.linearVelocity = direction * currentSpeed;
+
+        if (Vector2.Distance(transform.position, playerTransform.position) > enemyCombatSystem.attackFrontDistance)
+        {
+            // Déplacer l'ennemi vers le joueur
+            rb.linearVelocity = direction * currentSpeed;
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
         // Orienter l'ennemi vers le joueur
         if (direction.x != 0)

@@ -13,6 +13,8 @@ public class EnemyCombatSystem : MonoBehaviour
     public int attackDamage = 5;
     public float attackRange = 1.0f;
     public float attackCooldown = 1.0f;
+    public float attackFrontDistance = 1.0f;   
+    public LayerMask playerLayer;   
 
     [Header("Reward Settings")]
     public int experienceReward = 10;
@@ -131,5 +133,39 @@ public class EnemyCombatSystem : MonoBehaviour
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         onHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+    public void OnAttackEvent()
+    {
+        // Déterminer la position de l'attaque devant le joueur
+        Vector2 attackPosition = transform.position;
+
+        // Récupérer l'orientation du joueur
+        bool isFacingRight = transform.localScale.x > 0;
+
+        // Décaler la position de l'attaque en fonction de l'orientation
+        if (isFacingRight)
+        {
+            attackPosition.x += attackFrontDistance; // Attaque à droite
+        }
+        else
+        {
+            attackPosition.x -= attackFrontDistance; // Attaque à gauche
+        }
+
+        // Détecter les ennemis et leur infliger des dégâts
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(
+            attackPosition,
+            attackRange,
+            playerLayer
+        );
+
+        foreach (Collider2D player in hitPlayer)
+        {
+            PlayerCombatSystem playerCombatSystem = player.GetComponent<PlayerCombatSystem>();
+            if (playerCombatSystem != null)
+            {
+                playerCombatSystem.TakeDamage(attackDamage);
+            }
+        }
     }
 }
