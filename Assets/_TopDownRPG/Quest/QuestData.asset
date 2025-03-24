@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdce5998990071441aba03baa0215dec, type: 3}
+  m_Name: QuestData
+  m_EditorClassIdentifier: 
+  questName: Potion Commotion
+  questDescription: 'Find three potions asap please '
+  questType: 2
+  requiredAmount: 3
+  requiredItem: {fileID: 11400000, guid: 4e6d548c1b28f1848b7df81f31c02d5e, type: 2}
+  isMainQuest: 1
+  rewardItems:
+  - {fileID: 11400000, guid: 3f4f62516c668ce468ad31bd25fefdc9, type: 2}
+  - {fileID: 11400000, guid: 3f4f62516c668ce468ad31bd25fefdc9, type: 2}
+  - {fileID: 11400000, guid: 3f4f62516c668ce468ad31bd25fefdc9, type: 2}
+  experienceReward: 200
+  questOfferDialogue:
+  - 'Find me three bottle of liquor ....Euh i mean ..Potion ! Potion !
+
+    I''ll
+    give you wonderfull things in return '
+  questActiveDialogue:
+  - What are you waiting for ? i need the li ... euh potion !
+  questCompletedDialogue:
+  - 'Good Job buddy ! here you go '
