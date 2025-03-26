@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   itemName: potion
-  icon: {fileID: 21300000, guid: 98451d2a04ae2b54a9ec0ff4bc429fa3, type: 3}
+  icon: {fileID: 874354862, guid: fb9846c018bcf7444a431b13308c5935, type: 3}
   description: 
   isStackable: 1
   maxStackSize: 99
