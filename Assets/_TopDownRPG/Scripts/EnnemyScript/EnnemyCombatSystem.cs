@@ -115,6 +115,12 @@ public class EnemyCombatSystem : MonoBehaviour
 
         // Détruire l'ennemi après un délai pour laisser l'animation se jouer
         Destroy(gameObject, 5.0f);
+
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.EnemyKilled();
+        }
+
     }
 
     private void DropItem()

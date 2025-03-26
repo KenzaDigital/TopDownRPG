@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Potion Commotion
   questDescription: 'Find three potions asap please '
-  questType: 2
+  questType: 1
   requiredAmount: 3
   requiredItem: {fileID: 11400000, guid: 4e6d548c1b28f1848b7df81f31c02d5e, type: 2}
   isMainQuest: 1

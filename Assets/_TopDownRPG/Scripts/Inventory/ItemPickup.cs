@@ -37,5 +37,10 @@ public class ItemPickup : MonoBehaviour, IInteractable
             // Afficher un message "Inventaire plein"
             Debug.Log("Votre inventaire est plein !");
         }
+
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.ItemCollected(item);
+        }
     }
 }

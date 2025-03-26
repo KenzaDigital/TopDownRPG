@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour, IInteractable
     [Tooltip("Laissez vide pour utiliser le nom défini dans le DialogueData")]
     public string customName;
 
-    public void Interact()
+    public virtual void Interact()
     {
         if (dialogueData == null)
         {

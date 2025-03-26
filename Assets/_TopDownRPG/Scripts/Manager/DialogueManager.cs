@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Events;   
 
 public class DialogueManager : MonoBehaviour
 {
@@ -24,6 +24,9 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine; // Référence à la coroutine qui affiche le texte caractère par caractère
     private bool isDialogueActive; // Est-ce qu'un dialogue est actif?
 
+    // Ajout de l'événement Unity pour la fin du dialogue
+    public UnityEvent onDialogueEnded;
+
     // Singleton pattern
     public static DialogueManager Instance { get; private set; }
 
@@ -37,7 +40,11 @@ public class DialogueManager : MonoBehaviour
         }
         Instance = this;
 
-
+        // Initialiser l'événement Unity
+        if (onDialogueEnded == null)
+        {
+            onDialogueEnded = new UnityEvent();
+        }
 
         // S'assurer que le dialogue est désactivé au démarrage
         dialoguePanel.SetActive(false);
@@ -51,7 +58,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
     private void OnEnable()
     {
         // Activer l'action d'input
@@ -60,7 +66,6 @@ public class DialogueManager : MonoBehaviour
             continueDialogueAction.action.Enable();
         }
     }
-
 
     private void OnDisable()
     {
@@ -71,7 +76,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
     private void OnDestroy()
     {
         // Nettoyer les abonnements d'événements
@@ -80,7 +84,6 @@ public class DialogueManager : MonoBehaviour
             continueDialogueAction.action.started -= OnContinueDialogueInput;
         }
     }
-
 
     // Cette méthode est appelée quand l'action de continuer le dialogue est déclenchée
     private void OnContinueDialogueInput(InputAction.CallbackContext context)
@@ -178,6 +181,9 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
+
+        // Invoquer l'événement de fin de dialogue
+        onDialogueEnded.Invoke();
     }
 
     // Méthode publique pour vérifier si un dialogue est en cours

@@ -36793,6 +36793,7 @@ GameObject:
   - component: {fileID: 717262638}
   - component: {fileID: 717262637}
   - component: {fileID: 717262639}
+  - component: {fileID: 717262640}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -36833,6 +36834,9 @@ MonoBehaviour:
   continueIndicator: {fileID: 342536258}
   typingSpeed: 0.05
   continueDialogueAction: {fileID: -5540998880551695680, guid: b248664743d91d24db6adb208c8a9339, type: 3}
+  onDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &717262638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36866,6 +36870,39 @@ MonoBehaviour:
   slotPrefab: {fileID: 4128422525321205243, guid: dbb52e2faba8c9f42b3ef691e9e8fc31, type: 3}
   backgroundOverlay: {fileID: 2022429945}
   closeButton: {fileID: 0}
+--- !u!114 &717262640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717262635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96bcc9c69530d84b8e17ae7e9df1df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onQuestStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onQuestUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuestCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &719110592
 GameObject:
   m_ObjectHideFlags: 0
@@ -37255,6 +37292,9 @@ GameObject:
   - component: {fileID: 990409379}
   - component: {fileID: 990409380}
   - component: {fileID: 990409381}
+  - component: {fileID: 990409382}
+  - component: {fileID: 990409384}
+  - component: {fileID: 990409383}
   m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
@@ -37414,6 +37454,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &990409382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990409376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3e9fc1cd54e0141af28b78df9f2604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: b904a9845d852b745826aa237df1f051, type: 2}
+--- !u!114 &990409383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990409376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d0a6ed449bc52449540d1a63aadd85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueData: {fileID: 11400000, guid: d689127e4884e5f41932334077c06558, type: 2}
+  customName: 
+--- !u!114 &990409384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990409376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e481063ae6d8ed43a99489de5b101e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueData: {fileID: 11400000, guid: d689127e4884e5f41932334077c06558, type: 2}
+  customName: Dude
+  questGiver: {fileID: 990409382}
 --- !u!1 &1044063476
 GameObject:
   m_ObjectHideFlags: 0
