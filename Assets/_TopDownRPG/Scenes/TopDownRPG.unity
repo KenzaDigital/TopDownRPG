@@ -36447,7 +36447,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.52, y: 0.56}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.52, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -36499,7 +36499,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 98451d2a04ae2b54a9ec0ff4bc429fa3, type: 3}
+  m_Sprite: {fileID: 874354862, guid: fb9846c018bcf7444a431b13308c5935, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -37290,7 +37290,6 @@ GameObject:
   - component: {fileID: 990409378}
   - component: {fileID: 990409377}
   - component: {fileID: 990409379}
-  - component: {fileID: 990409380}
   - component: {fileID: 990409381}
   - component: {fileID: 990409382}
   - component: {fileID: 990409384}
@@ -37418,20 +37417,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &990409380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990409376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0d0a6ed449bc52449540d1a63aadd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: d689127e4884e5f41932334077c06558, type: 2}
-  customName: Dude
 --- !u!95 &990409381
 Animator:
   serializedVersion: 7
@@ -37493,9 +37478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e481063ae6d8ed43a99489de5b101e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: d689127e4884e5f41932334077c06558, type: 2}
+  dialogueData: {fileID: 11400000, guid: d07c5102da7de80408ead94e9a2b189f, type: 2}
   customName: Dude
   questGiver: {fileID: 990409382}
+  questDialogueData: {fileID: 0}
 --- !u!1 &1044063476
 GameObject:
   m_ObjectHideFlags: 0
@@ -40836,8 +40822,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.52, y: 0.56}
-    newSize: {x: 0.52, y: 0.56}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -40888,12 +40874,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 98451d2a04ae2b54a9ec0ff4bc429fa3, type: 3}
+  m_Sprite: {fileID: 874354862, guid: fb9846c018bcf7444a431b13308c5935, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.52, y: 0.56}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -41000,7 +40986,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.52, y: 0.56}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.52, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -41052,7 +41038,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 98451d2a04ae2b54a9ec0ff4bc429fa3, type: 3}
+  m_Sprite: {fileID: 874354862, guid: fb9846c018bcf7444a431b13308c5935, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

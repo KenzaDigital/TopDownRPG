@@ -5,6 +5,7 @@ public class QuestNPC : NPC
 {
     [Header("Quest Settings")]
     public QuestGiver questGiver;
+    public DialogueData questDialogueData; // Nouveau DialogueData pour les quêtes
 
     public override void Interact()
     {
@@ -22,7 +23,7 @@ public class QuestNPC : NPC
 
             if (dialogue != null && dialogue.Length > 0)
             {
-                string speakerName = string.IsNullOrEmpty(customName) ? dialogueData.npcName : customName;
+                string speakerName = string.IsNullOrEmpty(customName) ? questDialogueData.npcName : customName;
                 DialogueManager.Instance.StartDialogue(speakerName, dialogue);
                 ConfigureDialogueEndActions();
                 return;
