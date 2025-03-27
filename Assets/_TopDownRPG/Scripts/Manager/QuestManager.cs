@@ -69,7 +69,6 @@ public class QuestManager : MonoBehaviour
 
     // Met à jour la progression d'une quête
     public void UpdateQuestProgress(QuestData quest, int amount)
-        
     {
         QuestStatus questStatus = GetQuestStatus(quest);
 
@@ -91,11 +90,25 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    // ===== FONCTIONS LIÉES AUX ÉVÉNEMENTS DE JEU =====
+
+    // Appelée quand un ennemi meurt
+    public void EnemyKilled()
+    {
+        // Mettre à jour toutes les quêtes de type KillEnemies
+        foreach (QuestStatus quest in playerQuests)
+        {
+            if (quest.state == QuestState.Active && quest.quest.questType == QuestType.KillEnemies)
+            {
+                UpdateQuestProgress(quest.quest, 1);
+            }
+        }
+    }
+
     // Appelée quand un objet est collecté
     public void ItemCollected(Item item)
     {
         // Mettre à jour toutes les quêtes de collection pour cet objet
-        Debug.Log("Item collected: " + item.itemName);
         foreach (QuestStatus quest in playerQuests)
         {
             if (quest.state == QuestState.Active &&
@@ -103,7 +116,6 @@ public class QuestManager : MonoBehaviour
                 quest.quest.requiredItem == item)
             {
                 UpdateQuestProgress(quest.quest, 1);
-                Debug.Log($"Item collected: {item.itemName}, current amount: {quest.currentAmount}/{quest.quest.requiredAmount}");
             }
         }
     }
@@ -111,7 +123,7 @@ public class QuestManager : MonoBehaviour
     // ===== COMPLÉTION ET RÉCOMPENSES =====
 
     // Marque une quête comme terminée
-    private void CompleteQuest(QuestData quest)
+    public void CompleteQuest(QuestData quest)
     {
         QuestStatus questStatus = GetQuestStatus(quest);
 
@@ -155,21 +167,15 @@ public class QuestManager : MonoBehaviour
             Debug.Log("Received " + quest.experienceReward + " experience");
         }
 
+        /*// Vérifier si c'est une quête principale qui devrait déclencher la victoire ce votre défis ^^ 
+        if (quest.isMainQuest && GameManager.Instance != null)
+        {
+            GameManager.Instance.TriggerVictory();
+        }*/
+
         // Marquer comme récompensée
         questStatus.state = QuestState.Rewarded;
 
         Debug.Log("Received rewards for quest: " + quest.questName);
     }
-    public void EnemyKilled()
-    {
-        // Mettre à jour toutes les quêtes de type KillEnemies
-        foreach (QuestStatus quest in playerQuests)
-        {
-            if (quest.state == QuestState.Active && quest.quest.questType == QuestType.KillEnemies)
-            {
-                UpdateQuestProgress(quest.quest, 1);
-            }
-        }
-    }
 }
-

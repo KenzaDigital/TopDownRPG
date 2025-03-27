@@ -40,12 +40,8 @@ public class QuestGiver : MonoBehaviour
         Debug.Log("Quest started: " + quest.questName);
         if (QuestManager.Instance != null)
         {
-            
             // Démarrer la quête
             QuestManager.Instance.StartQuest(quest);
-           
-
-            
         }
     }
 
@@ -53,6 +49,11 @@ public class QuestGiver : MonoBehaviour
     {
         questStatus.state = QuestState.Complete;
         Debug.Log("Quest completed: " + quest.questName);
+        if (QuestManager.Instance != null)
+        {
+            // Mettre à jour la progression
+            QuestManager.Instance.CompleteQuest(quest);
+        }
     }
 
     public void GiveRewards()
@@ -60,9 +61,12 @@ public class QuestGiver : MonoBehaviour
         if (questStatus.state == QuestState.Complete)
         {
             // Logique pour donner les récompenses
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.GiveQuestRewards(quest);
+            }
             questStatus.state = QuestState.Rewarded;
             Debug.Log("Rewards given for quest: " + quest.questName);
         }
     }
 }
-
