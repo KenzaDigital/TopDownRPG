@@ -8,7 +8,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
 
     public string GetCustomName()
     {
-        throw new System.NotImplementedException();
+        return item.itemName;
     }
 
     public string GetInteractionPrompt()
@@ -29,6 +29,15 @@ public class ItemPickup : MonoBehaviour, IInteractable
         {
             // Jouer un son ou un effet de particule ici
 
+            
+            
+
+            // Notifier le QuestManager que l'objet a été collecté
+            if (QuestManager.Instance != null)
+            {
+                
+                QuestManager.Instance.ItemCollected(item);
+            }
             // Détruire l'objet dans le monde
             Destroy(gameObject);
         }
@@ -38,9 +47,5 @@ public class ItemPickup : MonoBehaviour, IInteractable
             Debug.Log("Votre inventaire est plein !");
         }
 
-        if (QuestManager.Instance != null)
-        {
-            QuestManager.Instance.ItemCollected(item);
-        }
     }
 }

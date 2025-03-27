@@ -38,6 +38,15 @@ public class QuestGiver : MonoBehaviour
     {
         questStatus.state = QuestState.Active;
         Debug.Log("Quest started: " + quest.questName);
+        if (QuestManager.Instance != null)
+        {
+            
+            // Démarrer la quête
+            QuestManager.Instance.StartQuest(quest);
+           
+
+            
+        }
     }
 
     public void CompleteQuest()

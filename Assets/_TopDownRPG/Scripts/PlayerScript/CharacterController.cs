@@ -72,7 +72,7 @@ public class CharacterController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("isWalking", isMoving);
-            Debug.Log("isWalking: " + isMoving);
+            
         }
     }
 

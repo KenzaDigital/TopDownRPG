@@ -16,7 +16,9 @@ public class QuestStatus
 
     public bool IsCompleted()
     {
-        return currentAmount >= quest.requiredAmount;
+        bool completed = currentAmount >= quest.requiredAmount;
+        Debug.Log($"Checking if quest is completed: {completed} (currentAmount: {currentAmount}, requiredAmount: {quest.requiredAmount})");
+        return completed;
     }
 }
 

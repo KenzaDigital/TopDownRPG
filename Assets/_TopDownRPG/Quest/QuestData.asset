@@ -24,11 +24,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f4f62516c668ce468ad31bd25fefdc9, type: 2}
   experienceReward: 200
   questOfferDialogue:
-  - 'Find me three bottle of liquor ....Euh i mean ..Potion ! Potion !
+  - 'Find me three bottle of liquor ....n '
+  - 'Euh i mean ..Potion ! Potion !
 
-    I''ll
-    give you wonderfull things in return '
+'
+  - 'I''ll give you wonderfull things in return '
   questActiveDialogue:
-  - What are you waiting for ? i need the li ... euh potion !
+  - 'What are you waiting for ? i need the li ... euh potion '
   questCompletedDialogue:
   - 'Good Job buddy ! here you go '
