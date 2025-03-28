@@ -36439,7 +36439,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -36519,7 +36519,7 @@ Transform:
   m_GameObject: {fileID: 495369758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7299995, y: 2.52, z: 0}
+  m_LocalPosition: {x: -10.73, y: -3.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37505,7 +37505,6 @@ MonoBehaviour:
   dialogueData: {fileID: 11400000, guid: d07c5102da7de80408ead94e9a2b189f, type: 2}
   customName: Dude
   questGiver: {fileID: 990409382}
-  questDialogueData: {fileID: 11400000, guid: d07c5102da7de80408ead94e9a2b189f, type: 2}
 --- !u!1 &1044063476
 GameObject:
   m_ObjectHideFlags: 0
@@ -39908,7 +39907,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -39988,7 +39987,7 @@ Transform:
   m_GameObject: {fileID: 1816665586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.049999, y: 8.95, z: 0}
+  m_LocalPosition: {x: -27.73, y: 4.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40507,9 +40506,9 @@ MonoBehaviour:
   patrolSpeed: 2
   waitTime: 1
   playerTransform: {fileID: 0}
-  detectionRadius: 4
-  chaseSpeed: 2.5
-  chaseTime: 4
+  detectionRadius: 1
+  chaseSpeed: 1
+  chaseTime: 2.5
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -40852,7 +40851,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -40932,7 +40931,7 @@ Transform:
   m_GameObject: {fileID: 1963431415}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7299995, y: 4.52, z: 0}
+  m_LocalPosition: {x: 13.27, y: -1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41111,7 +41110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 1970170752}
-  animator: {fileID: 0}
+  animator: {fileID: 1970170756}
 --- !u!114 &1970170754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41342,9 +41341,9 @@ MonoBehaviour:
   patrolSpeed: 2
   waitTime: 1
   playerTransform: {fileID: 0}
-  detectionRadius: 4
-  chaseSpeed: 2.5
-  chaseTime: 4
+  detectionRadius: 1
+  chaseSpeed: 2
+  chaseTime: 2
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
