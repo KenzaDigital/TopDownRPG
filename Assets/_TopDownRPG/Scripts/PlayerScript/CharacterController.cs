@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Windows.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,14 +6,11 @@ public class CharacterController : MonoBehaviour
 {
     [Header("Mouvement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float dashSpeed = 10f;
-    [SerializeField] private float dashDuration = 0.1f;
     [Header("Références")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator; // Référence à l'Animator
     private Vector2 moveDirection;
     private bool isFacingRight = true;
-    private bool isDashing = false;
 
     // Déclaration des booléens
     private bool isMoving = false; // Ici, le joueur est en mouvement ou non
@@ -107,31 +102,5 @@ public class CharacterController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
-    }
-
-    private void Dash()
-    {
-        if (!isDashing)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-    }
-
-    private void StartCoroutine(IEnumerable enumerable)
-    {
-        throw new NotImplementedException();
-    }
-
-    IEnumerable DashCoroutine()
-    {
-        isDashing = true;
-        float dashTime = 0f;
-        while (dashTime < dashDuration)
-        {
-            rb.linearVelocity = transform.right * dashSpeed;
-            dashTime += Time.deltaTime;
-            yield return null;
-        }
-        isDashing = false;
     }
 }
