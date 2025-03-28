@@ -36519,7 +36519,7 @@ Transform:
   m_GameObject: {fileID: 495369758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7299995, y: 2.52, z: 0}
+  m_LocalPosition: {x: 19.27, y: -0.48000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37505,7 +37505,6 @@ MonoBehaviour:
   dialogueData: {fileID: 11400000, guid: d07c5102da7de80408ead94e9a2b189f, type: 2}
   customName: Dude
   questGiver: {fileID: 990409382}
-  questDialogueData: {fileID: 11400000, guid: d07c5102da7de80408ead94e9a2b189f, type: 2}
 --- !u!1 &1044063476
 GameObject:
   m_ObjectHideFlags: 0
@@ -39988,7 +39987,7 @@ Transform:
   m_GameObject: {fileID: 1816665586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.049999, y: 8.95, z: 0}
+  m_LocalPosition: {x: -23.73, y: 5.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40147,7 +40146,7 @@ MonoBehaviour:
   target: {fileID: 1970170749}
   smoothSpeed: 5
   offset: {x: 0, y: 0, z: -10}
-  useBoundaries: 1
+  useBoundaries: 0
   minX: -10
   maxX: 10
   minY: -10
@@ -40932,7 +40931,7 @@ Transform:
   m_GameObject: {fileID: 1963431415}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7299995, y: 4.52, z: 0}
+  m_LocalPosition: {x: -10.73, y: -5.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
