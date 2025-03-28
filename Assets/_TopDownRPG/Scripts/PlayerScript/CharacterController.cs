@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Windows.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,8 +6,6 @@ public class CharacterController : MonoBehaviour
 {
     [Header("Mouvement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float dashSpeed = 10f; // Vitesse du dash
-    [SerializeField] private float dashDuration = 0.2f; // Durée du dash
     [Header("Références")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator; // Référence à l'Animator
@@ -18,7 +15,6 @@ public class CharacterController : MonoBehaviour
     // Déclaration des booléens
     private bool isMoving = false; // Ici, le joueur est en mouvement ou non
     private bool isAttacking = false; // Booléen pour indiquer si le joueur est en train d'attaquer
-    private bool isDashing = false; // Booléen pour indiquer si le joueur est en train de dasher
 
     private void Awake()
     {
@@ -56,6 +52,7 @@ public class CharacterController : MonoBehaviour
 
     public void SetMoveDirection(Vector2 direction)
     {
+        
         moveDirection = direction;
 
         // Gestion de l'orientation du sprite
@@ -75,16 +72,14 @@ public class CharacterController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("isWalking", isMoving);
+            
         }
     }
 
     private void FixedUpdate()
     {
         // On utilise FixedUpdate pour le mouvement physique
-        if (!isDashing)
-        {
-            Move();
-        }
+        Move();
     }
 
     private void Move()
@@ -108,41 +103,4 @@ public class CharacterController : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
-
-    public void Dash()
-    {
-        Debug.Log("Dash");
-        if (!isDashing && moveDirection != Vector2.zero)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-    }
-
-    private IEnumerator DashCoroutine()
-    {
-        isDashing = true;
-        animator.SetBool("isDashing", true);
-
-        Vector2 dashDirection = moveDirection.normalized;
-        rb.linearVelocity = dashDirection * dashSpeed;
-
-        yield return new WaitForSeconds(dashDuration);
-
-        rb.linearVelocity = Vector2.zero;
-        animator.SetBool("isDashing", false);
-        isDashing = false;
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing) // Remplacez "Space" par votre touche préférée
-        {
-            StartCoroutine(DashCoroutine());
-        }
-
-        if (!isDashing)
-        {
-            // Continuez le mouvement normal ici
-        }
-    }
-
 }

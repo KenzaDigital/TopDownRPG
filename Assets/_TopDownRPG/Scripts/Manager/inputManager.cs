@@ -5,8 +5,6 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     [SerializeField] private PlayerInput playerInput;
-    private CharacterController characterController;
-
     // Propriété pour accéder au PlayerInput depuis d'autres systèmes
     // Cherche automatiquement le PlayerInput s'il n'a pas encore été défini
     public PlayerInput CurrentPlayerInput
@@ -21,15 +19,10 @@ public class InputManager : MonoBehaviour
                 {
                     Debug.LogError("Missing PlayerInput in the scene");
                 }
-                else
-                {
-                    Debug.Log("PlayerInput found in the scene");
-                }
             }
             return playerInput;
         }
     }
-
     private void Awake()
     {
         // Singleton setup
@@ -45,21 +38,9 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-  
-
     // Méthode pour définir le PlayerInput quand un joueur est instancié
     public void SetPlayerInput(PlayerInput newPlayerInput)
     {
         playerInput = newPlayerInput;
-        characterController = playerInput.GetComponent<CharacterController>();
-        if (characterController != null)
-        {
-            playerInput.actions["Dash"].performed += ctx => characterController.Dash();
-            Debug.Log("Dash action bound to CharacterController");
-        }
-        else
-        {
-            Debug.LogError("CharacterController is missing on the PlayerInput GameObject");
-        }
     }
 }
