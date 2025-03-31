@@ -57,7 +57,6 @@ public class CharacterController : MonoBehaviour
 
     public void SetMoveDirection(Vector2 direction)
     {
-        
         moveDirection = direction;
 
         // Gestion de l'orientation du sprite
@@ -77,14 +76,16 @@ public class CharacterController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("isWalking", isMoving);
-            
         }
     }
 
     private void FixedUpdate()
     {
         // On utilise FixedUpdate pour le mouvement physique
-        Move();
+        if (!isDashing)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -109,29 +110,28 @@ public class CharacterController : MonoBehaviour
         transform.localScale = scale;
     }
 
-    private void Dash()
+    public void Dash()
     {
-        if (!isDashing)
+        Debug.Log("Dash");
+        if (!isDashing && moveDirection != Vector2.zero)
         {
             StartCoroutine(DashCoroutine());
         }
     }
 
-    private void StartCoroutine(IEnumerable enumerable)
-    {
-        throw new NotImplementedException();
-    }
-
-    IEnumerable DashCoroutine()
+    private IEnumerator DashCoroutine()
     {
         isDashing = true;
         float dashTime = 0f;
+
         while (dashTime < dashDuration)
         {
-            rb.linearVelocity = transform.right * dashSpeed;
+            rb.linearVelocity = moveDirection.normalized * dashSpeed;
             dashTime += Time.deltaTime;
             yield return null;
         }
+
+        rb.linearVelocity = Vector2.zero;
         isDashing = false;
     }
 }
