@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     // Déclaration des booléens
     private bool isMoving = false; // Ici, le joueur est en mouvement ou non
     private bool isAttacking = false; // Booléen pour indiquer si le joueur est en train d'attaquer
+    public Transform Player ; // Référence au joueur
 
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class CharacterController : MonoBehaviour
         moveDirection = direction;
 
         // Gestion de l'orientation du sprite
+        
         if (direction.x > 0 && !isFacingRight)
         {
             Flip();
@@ -108,6 +110,7 @@ public class CharacterController : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+       
     }
 
     public void Dash()
@@ -133,5 +136,14 @@ public class CharacterController : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
         isDashing = false;
+    }
+
+    void Update()
+    {
+        if (Player != null)
+        {
+            Vector2 direction = (Player.position - transform.position).normalized;
+            SetMoveDirection(direction);
+        }
     }
 }
