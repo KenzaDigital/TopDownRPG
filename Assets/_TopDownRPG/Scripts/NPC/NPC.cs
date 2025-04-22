@@ -46,4 +46,5 @@ public class NPC : MonoBehaviour, IInteractable
     {
         return string.IsNullOrEmpty(customName) ? dialogueData.npcName : customName;  
     }
+
 }
